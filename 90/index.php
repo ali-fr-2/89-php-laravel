@@ -1,34 +1,50 @@
-<?php 
+<?php
 
-class Animal{
+class fruit
+{
 
-    public $name="";
-    public $color="";
+    public $name;
+    public $color;
 
-    public $age="";
-
-    function sleep(){
-        echo "sleep";
+    function set_name($fruitName, $fruitColor)
+    {
+        $this->name = $fruitName;
+        $this->color = $fruitColor;
     }
 
+    function get_name()
+    {
+        return $this->name;
+    }
+    function get_color()
+    {
+        return $this->color;
+    }
 
+    function get_info()
+    {
+        return $this->name . " - " . $this->color;
+    }
 }
 
-$cat=new Animal();
+$apple = new fruit();
 
-$dog=new Animal();
+$apple->set_name("apple", "red");
 
-$cat->name="ali";
-$cat->color="black";
-$dog->name="arash";
-$dog->color="white";
+var_dump($apple);
 
-
-var_dump($cat);
 echo "<br>";
-var_dump($dog);
 
-// $cat->sleep();
+$banana = new fruit();
 
+$banana->set_name("banana", "yellow");
 
-?>
+echo $banana->get_color();
+
+echo "<br>";
+
+echo $banana->get_name();
+
+echo "<br>";
+
+echo $banana->get_info();
