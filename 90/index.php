@@ -1,16 +1,34 @@
 <?php 
 
-$str="i love php and java, pHp";
+class Animal{
 
-// $pattern="/php/";
-$pattern="/php/i";
+    public $name="";
+    public $color="";
+
+    public $age="";
+
+    function sleep(){
+        echo "sleep";
+    }
 
 
-// echo preg_match($pattern,$str);
-// echo preg_match_all($pattern,$str);
+}
 
-echo preg_replace($pattern,"python",$str);
+$cat=new Animal();
 
+$dog=new Animal();
+
+$cat->name="ali";
+$cat->color="black";
+$dog->name="arash";
+$dog->color="white";
+
+
+var_dump($cat);
+echo "<br>";
+var_dump($dog);
+
+// $cat->sleep();
 
 
 ?>
