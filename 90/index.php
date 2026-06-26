@@ -1,24 +1,28 @@
 <?php
 
 // class fruits{
-//     public $name="mango";
+//     const FRUITNAME="APPLE";
 // }
-// $mango=new fruits();
-// var_dump($mango);
 
+// echo fruits::FRUITNAME;
 
-class fruits{
-    public static $name="apple";
+abstract class car{
+    public $name;
+    public function __construct($carName)
+    {
+        $this->name=$carName;
+    }
+
+    abstract public function intro():string;
 }
 
-
-echo fruits::$name;
-
-
-class showName{
-    public static function ali(){
-        echo "my name is ali";
+class bmw extends car{
+    #[Override]
+    public function intro(): string
+    {
+        return "deutschland {$this->name}";
     }
 }
 
-showName::ali();
+$audi=new bmw("audi");
+echo $audi->intro();
