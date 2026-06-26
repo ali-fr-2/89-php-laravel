@@ -1,28 +1,20 @@
 <?php
 
-// class fruits{
-//     const FRUITNAME="APPLE";
-// }
-
-// echo fruits::FRUITNAME;
-
-abstract class car{
-    public $name;
-    public function __construct($carName)
-    {
-        $this->name=$carName;
-    }
-
-    abstract public function intro():string;
+interface animal{
+    public function makesound();
 }
 
-class bmw extends car{
+class cat implements animal{
     #[Override]
-    public function intro(): string
+    public function makesound()
     {
-        return "deutschland {$this->name}";
+        echo "meow";
     }
 }
 
-$audi=new bmw("audi");
-echo $audi->intro();
+$animal=new cat();
+
+$animal->makesound();
+
+
+?>
