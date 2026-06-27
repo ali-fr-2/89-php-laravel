@@ -4,7 +4,8 @@ include "./pdo.php";
 if(isset($_POST['sub'])){
     $email=$_POST['email'];
     $password=$_POST['password'];
-    $statement=$conn->query("SELECT `password` FROM users WHERE `email`= '$email'");
+    $statement=$conn->prepare("SELECT * FROM `users` WHERE email=? ");
+    $statement->bindValue(1,$email);
     $statement->execute();
     $result=$statement->fetchAll();
     if(password_verify($password,$result[0]['password'])){
