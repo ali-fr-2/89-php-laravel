@@ -1,22 +1,17 @@
-
 <?php
-
 include "./pdo.php";
 
 if(isset($_POST['sub'])){
     $email=$_POST['email'];
     $password=$_POST['password'];
-    $pwd=password_hash($password,PASSWORD_DEFAULT);
-    // echo $pwd;
-    $result=$conn->prepare("INSERT INTO users SET email=?,password=?");
-    $result->bindValue(1,$email);
-    $result->bindValue(2,$pwd);
-    $result->execute();
+    $statement=$conn->query("SELECT `password` FROM users WHERE `email`= '$email'");
+    $statement->execute();
+    $result=$statement->fetchAll();
+    if(password_verify($password,$result[0]['password'])){
+        echo "sucess";
+    }
 }
-
 ?>
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,7 +19,7 @@ if(isset($_POST['sub'])){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ثبت نام</title>
+    <title>ورود</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -41,7 +36,7 @@ if(isset($_POST['sub'])){
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                     </div>
                   
-                    <button type="submit" class="btn btn-primary"   name="sub">Login</button>
+                    <button type="submit" class="btn btn-primary"   name="sub"                >Login</button>
                 </form>
             </div>
         </div>
